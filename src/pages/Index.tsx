@@ -5,7 +5,7 @@ import Icon from '@/components/ui/icon';
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
   
-  const weddingDate = new Date('2025-06-15T16:00:00');
+  const weddingDate = new Date('2026-08-07T16:00:00');
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -69,13 +69,13 @@ const Index = () => {
             <Icon name="HeartHandshake" size={64} className="mx-auto text-rose-400 mb-4" />
           </div>
           <h1 className="font-cormorant text-6xl md:text-8xl font-bold text-gray-800 mb-4">
-            Анна & Дмитрий
+            Лев & Яна
           </h1>
           <p className="text-2xl md:text-3xl text-gray-600 mb-12">
             Приглашаем вас разделить с нами радость нашего торжества
           </p>
           <div className="text-xl text-rose-600 mb-8">
-            15 июня 2025 · 16:00
+            7 августа 2026 · 16:00
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mb-12">
@@ -115,12 +115,12 @@ const Index = () => {
             <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-rose-300 via-purple-300 to-pink-300"></div>
             
             {[
-              { time: '16:00', title: 'Встреча гостей', desc: 'Приветствуем вас шампанским и закусками', icon: 'Sparkles' },
-              { time: '16:30', title: 'Церемония', desc: 'Обмен клятвами и кольцами', icon: 'Heart' },
-              { time: '17:00', title: 'Фуршет', desc: 'Лёгкие закуски и фотосессия', icon: 'Camera' },
-              { time: '18:00', title: 'Банкет', desc: 'Праздничный ужин и первый танец', icon: 'Utensils' },
-              { time: '20:00', title: 'Развлечения', desc: 'Конкурсы, танцы и веселье', icon: 'Music' },
-              { time: '23:00', title: 'Торт', desc: 'Торжественное разрезание свадебного торта', icon: 'Cake' }
+              { time: '13:45', title: 'ЗАГС', desc: 'Официальная церемония бракосочетания', icon: 'Heart' },
+              { time: '16:00', title: 'Начало банкета', desc: 'Встреча гостей, фуршет и фотосессия', icon: 'Sparkles' },
+              { time: '17:00', title: 'Праздничный ужин', desc: 'Первый танец и торжественный ужин', icon: 'Utensils' },
+              { time: '19:00', title: 'Развлечения', desc: 'Конкурсы, танцы и веселье', icon: 'Music' },
+              { time: '21:00', title: 'Торт', desc: 'Торжественное разрезание свадебного торта', icon: 'Cake' },
+              { time: '23:00', title: 'Завершение', desc: 'Конец торжества', icon: 'Clock' }
             ].map((event, index) => (
               <div key={index} className={`flex items-center mb-12 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                 <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:pl-12'} pl-20 md:pl-0`}>
@@ -151,10 +151,10 @@ const Index = () => {
               <Icon name="MapPin" size={32} className="text-purple-500 flex-shrink-0" />
               <div>
                 <h3 className="font-cormorant text-3xl font-bold text-gray-800 mb-2">
-                  Загородный клуб "Мечта"
+                  Отель Гранд Холл
                 </h3>
                 <p className="text-gray-600 text-lg">
-                  Московская область, Истринский район, деревня Лечищево
+                  г. Екатеринбург
                 </p>
               </div>
             </div>
@@ -175,7 +175,7 @@ const Index = () => {
                 <div>
                   <h4 className="font-bold text-gray-800 mb-1">На автомобиле</h4>
                   <p className="text-sm text-gray-600">
-                    40 км от МКАД по Новорижскому шоссе. Парковка для гостей.
+                    Бесплатная парковка для гостей на территории отеля.
                   </p>
                 </div>
               </div>
@@ -183,9 +183,9 @@ const Index = () => {
               <div className="flex items-start gap-3">
                 <Icon name="Bus" size={24} className="text-rose-500 flex-shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-bold text-gray-800 mb-1">Трансфер</h4>
+                  <h4 className="font-bold text-gray-800 mb-1">Общественный транспорт</h4>
                   <p className="text-sm text-gray-600">
-                    Организуем автобус от метро Тушинская в 15:00
+                    Удобное расположение в центре города
                   </p>
                 </div>
               </div>
@@ -196,7 +196,7 @@ const Index = () => {
             <div className="flex items-center gap-3">
               <Icon name="Info" size={24} className="text-rose-600" />
               <p className="text-gray-700">
-                <strong>Важно:</strong> Пожалуйста, подтвердите своё присутствие до 1 июня
+                <strong>Важно:</strong> Пожалуйста, подтвердите своё присутствие до 1 августа 2026
               </p>
             </div>
           </Card>
@@ -293,7 +293,7 @@ const Index = () => {
         <div className="max-w-4xl mx-auto text-center">
           <Icon name="Heart" size={48} className="mx-auto text-rose-400 mb-4" />
           <p className="font-cormorant text-2xl text-gray-700 mb-2">
-            С любовью, Анна и Дмитрий
+            С любовью, Лев и Яна
           </p>
           <p className="text-gray-600">
             Ждём вас на нашем празднике!
