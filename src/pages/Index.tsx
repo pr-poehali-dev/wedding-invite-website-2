@@ -353,7 +353,7 @@ const Index = () => {
             </div>
 
             <div className="flex items-center justify-center gap-4 flex-wrap">
-              <div className="w-16 h-16 rounded-full bg-rose-200 border-2 border-rose-300 hover-scale"></div>
+              <div className="w-16 h-16 rounded-full border-2 border-rose-300 hover-scale bg-purple-600"></div>
               <div className="w-16 h-16 rounded-full bg-pink-200 border-2 border-pink-300 hover-scale"></div>
               <div className="w-16 h-16 rounded-full bg-purple-200 border-2 border-purple-300 hover-scale"></div>
               <div className="w-16 h-16 rounded-full bg-indigo-200 border-2 border-indigo-300 hover-scale"></div>
