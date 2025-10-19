@@ -4,6 +4,10 @@ import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [rsvpName, setRsvpName] = useState('');
+  const [rsvpGuests, setRsvpGuests] = useState('1');
+  const [rsvpAttending, setRsvpAttending] = useState('yes');
+  const [rsvpSubmitted, setRsvpSubmitted] = useState(false);
   
   const weddingDate = new Date('2026-08-07T16:00:00');
   const [timeLeft, setTimeLeft] = useState({
@@ -35,6 +39,12 @@ const Index = () => {
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const handleRsvpSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setRsvpSubmitted(true);
+    setTimeout(() => setRsvpSubmitted(false), 3000);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-rose-50 via-purple-50 to-pink-50">
       <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
@@ -44,7 +54,9 @@ const Index = () => {
               { id: 'home', label: 'Главная', icon: 'Heart' },
               { id: 'schedule', label: 'Программа', icon: 'Calendar' },
               { id: 'location', label: 'Место', icon: 'MapPin' },
-              { id: 'dresscode', label: 'Дресс-код', icon: 'Shirt' }
+              { id: 'gallery', label: 'Галерея', icon: 'Images' },
+              { id: 'dresscode', label: 'Дресс-код', icon: 'Shirt' },
+              { id: 'rsvp', label: 'RSVP', icon: 'Mail' }
             ].map((item) => (
               <button
                 key={item.id}
@@ -203,6 +215,41 @@ const Index = () => {
         </div>
       </section>
 
+      <section id="gallery" className="min-h-screen flex items-center justify-center px-4 py-20">
+        <div className="max-w-4xl w-full animate-fade-in">
+          <h2 className="font-cormorant text-5xl md:text-6xl font-bold text-center text-gray-800 mb-16">
+            Наша история
+          </h2>
+          
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            {[
+              { title: 'Первая встреча', desc: 'Весна 2023', gradient: 'from-rose-200 to-pink-200' },
+              { title: 'Первое свидание', desc: 'Май 2023', gradient: 'from-purple-200 to-indigo-200' },
+              { title: 'Помолвка', desc: 'Декабрь 2025', gradient: 'from-orange-200 to-rose-200' },
+              { title: 'Наши путешествия', desc: '12 городов', gradient: 'from-pink-200 to-purple-200' },
+              { title: 'Совместные мечты', desc: 'Бесконечность', gradient: 'from-indigo-200 to-purple-200' },
+              { title: 'Наша свадьба', desc: '7 августа 2026', gradient: 'from-rose-200 to-orange-200' }
+            ].map((item, index) => (
+              <Card key={index} className="p-6 bg-white/60 backdrop-blur-sm border-rose-200 hover-scale overflow-hidden group">
+                <div className={`aspect-square bg-gradient-to-br ${item.gradient} rounded-lg mb-4 flex items-center justify-center transition-transform group-hover:scale-105`}>
+                  <Icon name="Heart" size={48} className="text-white/80" />
+                </div>
+                <h3 className="font-cormorant text-xl font-bold text-gray-800 mb-1">{item.title}</h3>
+                <p className="text-sm text-gray-600">{item.desc}</p>
+              </Card>
+            ))}
+          </div>
+
+          <Card className="p-8 bg-gradient-to-br from-purple-100 to-rose-100 border-purple-200 text-center">
+            <Icon name="Quote" size={32} className="mx-auto text-purple-400 mb-4" />
+            <p className="font-cormorant text-2xl text-gray-800 italic mb-2">
+              "Любовь — это когда два сердца бьются в унисон"
+            </p>
+            <p className="text-gray-600">Лев & Яна</p>
+          </Card>
+        </div>
+      </section>
+
       <section id="dresscode" className="min-h-screen flex items-center justify-center px-4 py-20">
         <div className="max-w-4xl w-full animate-fade-in">
           <h2 className="font-cormorant text-5xl md:text-6xl font-bold text-center text-gray-800 mb-16">
@@ -286,6 +333,111 @@ const Index = () => {
               </p>
             </div>
           </Card>
+        </div>
+      </section>
+
+      <section id="rsvp" className="min-h-screen flex items-center justify-center px-4 py-20">
+        <div className="max-w-2xl w-full animate-fade-in">
+          <h2 className="font-cormorant text-5xl md:text-6xl font-bold text-center text-gray-800 mb-8">
+            Подтверждение присутствия
+          </h2>
+          <p className="text-center text-gray-600 mb-12">
+            Пожалуйста, сообщите нам о своём решении до 1 августа 2026
+          </p>
+
+          <Card className="p-8 bg-white/70 backdrop-blur-sm border-purple-200">
+            {rsvpSubmitted ? (
+              <div className="text-center py-12 animate-scale-in">
+                <Icon name="CheckCircle" size={64} className="mx-auto text-green-500 mb-4" />
+                <h3 className="font-cormorant text-3xl font-bold text-gray-800 mb-2">
+                  Спасибо!
+                </h3>
+                <p className="text-gray-600">
+                  Ваш ответ получен. Ждём вас на нашем празднике!
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleRsvpSubmit} className="space-y-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Ваше имя и фамилия
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={rsvpName}
+                    onChange={(e) => setRsvpName(e.target.value)}
+                    className="w-full px-4 py-3 rounded-lg border border-rose-200 focus:border-rose-400 focus:ring-2 focus:ring-rose-200 outline-none transition-all"
+                    placeholder="Иван Иванов"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Планируете присутствовать?
+                  </label>
+                  <div className="grid grid-cols-2 gap-4">
+                    <button
+                      type="button"
+                      onClick={() => setRsvpAttending('yes')}
+                      className={`py-3 px-4 rounded-lg border-2 transition-all ${
+                        rsvpAttending === 'yes'
+                          ? 'border-rose-400 bg-rose-50 text-rose-700'
+                          : 'border-gray-200 hover:border-rose-200'
+                      }`}
+                    >
+                      <Icon name="Check" size={20} className="inline mr-2" />
+                      Да, буду
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setRsvpAttending('no')}
+                      className={`py-3 px-4 rounded-lg border-2 transition-all ${
+                        rsvpAttending === 'no'
+                          ? 'border-purple-400 bg-purple-50 text-purple-700'
+                          : 'border-gray-200 hover:border-purple-200'
+                      }`}
+                    >
+                      <Icon name="X" size={20} className="inline mr-2" />
+                      Не смогу
+                    </button>
+                  </div>
+                </div>
+
+                {rsvpAttending === 'yes' && (
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Количество гостей
+                    </label>
+                    <select
+                      value={rsvpGuests}
+                      onChange={(e) => setRsvpGuests(e.target.value)}
+                      className="w-full px-4 py-3 rounded-lg border border-rose-200 focus:border-rose-400 focus:ring-2 focus:ring-rose-200 outline-none transition-all"
+                    >
+                      <option value="1">1 человек</option>
+                      <option value="2">2 человека</option>
+                      <option value="3">3 человека</option>
+                      <option value="4">4 человека</option>
+                    </select>
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-rose-400 to-purple-400 text-white py-4 rounded-lg font-semibold hover:from-rose-500 hover:to-purple-500 transition-all hover-scale flex items-center justify-center gap-2"
+                >
+                  <Icon name="Send" size={20} />
+                  Отправить ответ
+                </button>
+              </form>
+            )}
+          </Card>
+
+          <div className="mt-8 text-center">
+            <p className="text-gray-600 text-sm">
+              Если у вас возникли вопросы, свяжитесь с нами
+            </p>
+          </div>
         </div>
       </section>
 
