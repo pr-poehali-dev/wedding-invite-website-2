@@ -171,13 +171,50 @@ const Index = () => {
               </div>
             </div>
             
-            <div className="bg-gradient-to-br from-purple-100 to-rose-100 rounded-lg p-8 mb-6">
-              <div className="aspect-video bg-white/50 rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <Icon name="Map" size={64} className="mx-auto text-purple-400 mb-4" />
-                  <p className="text-gray-600">Интерактивная карта</p>
-                  <p className="text-sm text-gray-500">Яндекс.Карты или Google Maps</p>
-                </div>
+            <div className="rounded-lg overflow-hidden mb-6 border-2 border-purple-200">
+              <iframe
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3A7a9c8b5e4f3d2c1a0b9e8d7c6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7a&amp;source=constructor"
+                width="100%"
+                height="400"
+                frameBorder="0"
+                className="w-full"
+                title="Карта расположения отеля Гранд Холл"
+              ></iframe>
+            </div>
+
+            <div className="bg-gradient-to-br from-purple-50 to-rose-50 rounded-lg p-6 mb-6">
+              <div className="flex items-center gap-3 mb-3">
+                <Icon name="Navigation" size={24} className="text-purple-500" />
+                <h4 className="font-bold text-gray-800">Построить маршрут</h4>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="https://yandex.ru/maps/?rtext=~56.838011,60.597465"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg hover:bg-purple-50 transition-all border border-purple-200 hover-scale"
+                >
+                  <Icon name="MapPin" size={18} className="text-purple-500" />
+                  <span className="text-sm font-medium">Яндекс.Карты</span>
+                </a>
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=56.838011,60.597465"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg hover:bg-rose-50 transition-all border border-rose-200 hover-scale"
+                >
+                  <Icon name="MapPin" size={18} className="text-rose-500" />
+                  <span className="text-sm font-medium">Google Maps</span>
+                </a>
+                <a
+                  href="https://2gis.ru/ekaterinburg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg hover:bg-orange-50 transition-all border border-orange-200 hover-scale"
+                >
+                  <Icon name="MapPin" size={18} className="text-orange-500" />
+                  <span className="text-sm font-medium">2ГИС</span>
+                </a>
               </div>
             </div>
 
